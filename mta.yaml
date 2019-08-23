@@ -30,6 +30,16 @@ modules:
       - name: UAA-service
       - name: hdi_db
       - name: db
+
+  
+
+
+  - name: dwh
+    type: hdb
+    path: dwh
+    requires:
+     - name: hdi_dwh
+
 resources:
   - name: UAA-service
     type: com.sap.xs.uaa-space
@@ -47,3 +57,14 @@ resources:
     parameters:
       service: sapui5_sb
       service-plan: sapui5-1.52
+
+  - name: hdi_dwh
+    parameters:
+       config:
+          schema: dwh
+    properties:
+       hdi-container-name_2: ${service-name}
+    type: com.sap.xs.hdi-container
+
+
+
